@@ -1,0 +1,21 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secrets
+*.key
+*.pem
+*.pfx
+.env
+
+# Logs / noisy outputs
+*.log
+alert*
+snort.log*
+/var/log/snort/
+
+# Large artifacts (keep small samples only)
+artifacts/pcaps/*.pcap
+artifacts/pcaps/*.pcapng
