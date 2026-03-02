@@ -39,4 +39,31 @@ Example:
 ## Conclusion
 
 Sensor successfully detects and logs baseline ICMP activity.
-This establishes operational readiness for more advanced detection rules.
+
+MITRE ATT&CK Mapping
+Detection: ICMP Host Discovery
+
+Tactic: Reconnaissance
+
+Technique: T1595 – Active Scanning
+
+Description: Detects ICMP echo requests used for host discovery.
+
+Detection: Admin Panel Enumeration
+
+Tactic: Reconnaissance
+
+Technique: T1595 – Active Scanning
+
+Secondary Technique: T1190 – Exploit Public-Facing Application
+
+Description: Detects HTTP GET requests targeting administrative endpoints.
+
+Detection: SYN Port Scan
+
+Tactic: Reconnaissance
+
+Technique: T1046 – Network Service Discovery
+
+Description: Threshold-based detection of rapid SYN packets from a single source.
+
