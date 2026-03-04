@@ -16,6 +16,6 @@ alert*
 snort.log*
 /var/log/snort/
 
-# Large artifacts (keep small samples only)
+# Large artifacts
 artifacts/pcaps/*.pcap
 artifacts/pcaps/*.pcapng
